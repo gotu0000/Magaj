@@ -99,6 +99,11 @@ When a PDF is uploaded to the session or appears in `content/inbox/`:
 
 - Never guess at an unreadable symbol. Emit `⟨?⟩` and list it under a
   `## Transcription flags` heading with the line it appears on.
+- Zoom before committing to a symbol that changes meaning — a unit,
+  exponent, subscript or sign. Crop that region and re-render it at
+  high resolution; the page-level view is not enough. A cursive `c`
+  joined to the next letter reads as an extra hump, which made `cm`
+  transcribe as `mm` twice on lecture 02 p.3.
 - After transcribing, re-read the source and report every symbol below
   high confidence.
 - Do not "clean up" math that looks wrong. Transcribe as written and
