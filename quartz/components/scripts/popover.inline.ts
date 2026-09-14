@@ -137,5 +137,14 @@ function setupPopovers() {
   }
 }
 
+// LOCAL PATCH (not upstream). A popover is appended to document.body and
+// shown by an async handler. Clicking a link mid-fetch does not reliably
+// fire mouseleave, so the `activeAnchor !== this` guard above does not
+// catch it: the popover is shown after the SPA has already swapped the
+// page, leaving a preview of the page you are now on floating over it
+// until you happen to hover another link. Clearing on nav nulls
+// activeAnchor so any in-flight handler bails at that guard.
+// Asserted by scripts/check-site-invariants.sh — keep both in step.
+document.addEventListener("nav", clearActivePopover)
 document.addEventListener("nav", setupPopovers)
 document.addEventListener("render", setupPopovers)

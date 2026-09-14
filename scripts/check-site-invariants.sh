@@ -29,6 +29,21 @@ check() { # description, path under public/, grep pattern
   fi
 }
 
+source_contains() { # description, source path, grep pattern
+  # For local patches to Quartz's own code, where there is no rendered
+  # artefact to assert. A pull that drops the patch fails here.
+  local desc=$1 file=$2 pattern=$3
+  if [[ ! -f "$file" ]]; then
+    printf 'FAIL  %s\n      %s does not exist\n' "$desc" "$file"
+    fail=1
+  elif grep -q "$pattern" "$file"; then
+    printf 'ok    %s\n' "$desc"
+  else
+    printf 'FAIL  %s\n      %s has no match for: %s\n' "$desc" "$file" "$pattern"
+    fail=1
+  fi
+}
+
 exists() { # description, path under public/
   local desc=$1 file=$2
   if [[ -e "public/$file" ]]; then
@@ -53,6 +68,15 @@ check "table of contents on a section index" "physics/index.html"   'class="toc'
 # stopped being copied into the build, every one of those links would 404
 # while the notes themselves still rendered perfectly.
 exists "lecture 02 source PDF" "sources/physics/lecture-02-1d-kinematics.pdf"
+
+# Local patch to Quartz core: popovers stranded by SPA navigation.
+# Without this listener a popover shown by an async handler after a click
+# survives the page swap, floating a preview of the current page over
+# itself until another link is hovered. This is a patch inside quartz/,
+# so a pull from upstream can drop it in a conflict resolution.
+source_contains "popover cleared on SPA navigation" \
+  "quartz/components/scripts/popover.inline.ts" \
+  'addEventListener("nav", clearActivePopover)'
 
 if (( fail )); then
   printf '\nSite invariant check FAILED.\n'
