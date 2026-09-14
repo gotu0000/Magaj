@@ -44,6 +44,8 @@ jobs:
         run: npx quartz plugin install
       - name: Build Quartz
         run: npx quartz build
+      - name: Check site invariants
+        run: ./scripts/check-site-invariants.sh
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -259,6 +259,23 @@ If a fix would change the meaning, or you can't tell what I meant,
 
 ---
 
+## Upstream Quartz
+
+This repo is a fork of Quartz. `content/` and `CLAUDE.md` are ours;
+`quartz/`, `docs/` and `package.json` are upstream's. Pulling a new
+Quartz version can conflict on any file both sides changed, and a
+conflict resolved in upstream's favour drops our change silently.
+
+- `quartz.config.yaml` is ours to edit — upstream maintains
+  `quartz.config.default.yaml`. Prefer config over patching `quartz/`.
+- When a change to `quartz/` is unavoidable, add an assertion to
+  `scripts/check-site-invariants.sh`. It runs in CI after the build,
+  so a silent revert fails the deploy instead of going unnoticed.
+- Assert the outcome, not the diff — the rendered page, not a line
+  number.
+
+---
+
 ## Scope
 
 Domain-specific conventions belong in `content/<domain>/CLAUDE.md`.
