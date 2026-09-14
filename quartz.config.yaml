@@ -153,6 +153,15 @@ plugins:
     enabled: true
   - source: "@quartz-community/content-page"
     enabled: true
+  # MUST STAY ENABLED. This is the only emitter for <folder>/index.md —
+  # ContentPage does not emit it. Disabling this plugin does not merely
+  # drop the automatic folder listing, it 404s content/physics/index.md
+  # and content/valuation/index.md outright, breaking every note's
+  # [[physics/|Physics]] link. Verified by building with it off.
+  #
+  # The cost of leaving it on: the folder listing is appended under the
+  # curated content of <folder>/index.md, so concepts appear twice on a
+  # section index — once grouped by hand, once flat. That is accepted.
   - source: "@quartz-community/folder-page"
     enabled: true
   - source: "@quartz-community/tag-page"
