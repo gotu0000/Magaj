@@ -23,6 +23,12 @@ Three checkpoints in every lecture-processing session:
 At each one, present the result in the conversation and wait for an
 explicit instruction. Do not proceed on assumed approval.
 
+**Verify, don't reason.** Before stating how the site renders or
+behaves, build it and look — `npx quartz build`, then read the emitted
+HTML under `public/`, or screenshot the page with headless Chromium.
+Reading `quartz.config.yaml` or the Quartz source is not enough; it has
+produced confident wrong answers more than once.
+
 ---
 
 ## Repository structure
@@ -146,6 +152,10 @@ the Lagrangian formulation follows from this.
 - Every note links its source PDF with a page number at the top.
 - Every note links to at least one section index.
 - Open with plain language before any math.
+- A note about a diagram should show the diagram. Redraw it as inline
+  SVG with `currentColor` strokes so it follows both themes, caption it
+  as schematic, and leave `**Detail:**` pointing at the PDF as the
+  authority on the exact shape.
 - Unresolved questions become `> [!question]` callouts. An open
   question is a valid note state.
 
