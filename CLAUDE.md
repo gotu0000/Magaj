@@ -29,6 +29,13 @@ HTML under `public/`, or screenshot the page with headless Chromium.
 Reading `quartz.config.yaml` or the Quartz source is not enough; it has
 produced confident wrong answers more than once.
 
+The same applies to two other things. Before quoting a rule from this
+file, re-read the line — do not paraphrase from memory, and never
+present your own inference as a rule that lives here, least of all
+in a `%%` comment, which a later session reads as settled convention.
+Before stating how Claude Code itself works — hook events, payload
+fields, tooling — check the documentation rather than recalling it.
+
 ---
 
 ## Repository structure
@@ -109,7 +116,10 @@ When a PDF is uploaded to the session or appears in `content/inbox/`:
   exponent, subscript or sign. Crop that region and re-render it at
   high resolution; the page-level view is not enough. A cursive `c`
   joined to the next letter reads as an extra hump, which made `cm`
-  transcribe as `mm` twice on lecture 02 p.3.
+  transcribe as `mm` twice on lecture 02 p.3. Crop with
+  `pdftoppm -f <page> -l <page> -r 400 -x <x> -y <y> -W <w> -H <h> -png <pdf> <out>`.
+  Those coordinates are in 400-dpi pixels, so scale up from where the
+  symbol sits on the full-page view; expect two attempts to frame it.
 - After transcribing, re-read the source and report every symbol below
   high confidence.
 - Do not "clean up" math that looks wrong. Transcribe as written and
