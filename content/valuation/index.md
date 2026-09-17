@@ -15,6 +15,6 @@ _Nothing processed yet._
 
 ## Concepts
 
-%% Regenerate after each lecture: one line per concept note at the valuation/ root, alphabetical. Split into sub-headings only when the flat list stops being scannable — ask first. %%
+%% Regenerate after each lecture: one line per concept note at the valuation/ root, alphabetical. A long list is correct here — this is an index, not a note, so the ~100 word and no-scrolling limits under Note format do not apply to it. Search and the explorer sidebar also find notes. Do not regroup into sub-headings without asking. %%
 
 _Nothing yet._
