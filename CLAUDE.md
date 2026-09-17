@@ -140,9 +140,6 @@ status: seed
 **Why it matters:** Reframes mechanics from forces to optimization —
 the Lagrangian formulation follows from this.
 
-## What I learned
-<my words, verbatim — see Interview>
-
 **Detail:** [[sources/2026-09-08-lagrangian.pdf|Lecture 3, p.4]]
 
 **Related:** [[Euler-Lagrange equation]], [[Generalized coordinates]]
@@ -166,7 +163,10 @@ the Lagrangian formulation follows from this.
 - After the concepts are confirmed, ask **one** question, once per
   lecture, not per concept:
   *"What did you take away from this lecture?"*
-- Put the answer in `## What I learned` in **my own words**.
+- Put the answer in `## What I learned` in **my own words**, whole, in
+  the lecture index note — one answer per lecture, one lecture note per
+  lecture. Never split it across concept notes, even when it covers
+  several of them: splitting sentences is not allowed.
 - Write gist, significance, structure and links yourself.
 - Never add your own content to `## What I learned`. If I skip the
   question, leave the section out entirely.
